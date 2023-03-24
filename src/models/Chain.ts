@@ -5,21 +5,21 @@ export type Chain = {
     rpcUrl: string;
   };
   
-export const goerli: Chain = {
-    chainId: '5',
-    name: 'Goerli',
-    blockExplorerUrl: 'https://goerli.etherscan.io',
-    rpcUrl: 'https://goerli.infura.io/v3/59b59e23bb7c44d799b5db4a1b83e4ee',
+export const BinanceSmartChain: Chain = {
+    chainId: '97',
+    name: 'BinanceSmartChain',
+    blockExplorerUrl: 'https://testnet.bscscan.io',
+    rpcUrl: 'https://sleek-cold-friday.bsc.discover.quiknode.pro/cb6a6b88272911b287ca81a0a0f82f88d0fc5568/',
 };
 
-export const mainnet: Chain = {
-    chainId: '1',
-    name: 'Ethereum',
-    blockExplorerUrl: 'https://etherscan.io',
-    rpcUrl: 'https://mainnet.infura.io/v3/59b59e23bb7c44d799b5db4a1b83e4ee',
+export const binance: Chain = {
+    chainId: '56',
+    name: 'Binance Smart Chain',
+    blockExplorerUrl: 'https://bscscan.io',
+    rpcUrl: 'https://sleek-cold-friday.bsc.discover.quiknode.pro/cb6a6b88272911b287ca81a0a0f82f88d0fc5568/',
 };
 
 export const CHAINS_CONFIG = {
-    [goerli.chainId]: goerli,
-    [mainnet.chainId]: mainnet,
+    [binance.chainId]: binance,
+    [BinanceSmartChain.chainId]: BinanceSmartChain,
 };

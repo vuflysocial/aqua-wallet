@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { sendToken } from '../../utils/TransactionUtils';
-import { goerli } from '../../models/Chain';
+import { binance } from '../../models/Chain';
 import { Account } from '../../models/Account';
 import AccountTransactions from './AccountTransactions';
 import { ethers } from 'ethers';
@@ -23,7 +23,7 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const provider = new ethers.providers.JsonRpcProvider(goerli.rpcUrl);
+        const provider = new ethers.providers.JsonRpcProvider(binance.rpcUrl);
         let accountBalance = await provider.getBalance(account.address);
         setBalance((String(toFixedIfNecessary(ethers.utils.formatEther(accountBalance)))));
     }
@@ -52,7 +52,7 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
         // Set the network response status to "complete" and the message to the transaction hash
         setNetworkResponse({
           status: 'complete',
-          message: <p>Transfer complete! <a href={`${goerli.blockExplorerUrl}/tx/${receipt.transactionHash}`} target="_blank" rel="noreferrer">
+          message: <p>Transfer complete! <a href={`${binance.blockExplorerUrl}/tx/${receipt.transactionHash}`} target="_blank" rel="noreferrer">
             View transaction
             </a></p>,
         });
@@ -81,10 +81,10 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
   return (
     <div className='AccountDetail container'>
         <h4>
-            Address: <a href={`https://goerli.etherscan.io/address/${account.address}`} target="_blank" rel="noreferrer">
+            Address: <a href={`https://bscscan.io/address/${account.address}`} target="_blank" rel="noreferrer">
             {account.address}
             </a><br/>
-            Balance: {balance} ETH
+            Balance: {balance} BNB
         </h4>
 
         <div className="form-group">
@@ -113,7 +113,7 @@ const AccountDetail: React.FC<AccountDetailProps> = ({account}) => {
             onClick={transfer}
             disabled={!amount || networkResponse.status === 'pending'}
         >
-            Send {amount} ETH
+            Send {amount} BNB
         </button>
 
         {networkResponse.status &&

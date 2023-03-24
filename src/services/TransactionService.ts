@@ -1,18 +1,18 @@
 import axios from 'axios';
-import { goerli } from '../models/Chain';
+import { binance } from '../models/Chain';
 
 
 
 export class TransactionService {
 
-  static API_URL =  'https://deep-index.moralis.io/api/v2';
-  static API_KEY =  'EuwYtjWwWHGbnwsCnGauMtMMaEQZugtjaws2ybm2ZpSR15a8vzl6QUPkEUWHTOCU';
+  static API_URL =  'https://api.quicknode.com/graphql';
+  static API_KEY =  'QN_752826c85d814943a1ba1755d76f6d5d';
 
   static async getTransactions(address: string) {
     const options = {
         method: 'GET',
         url: `${TransactionService.API_URL}/${address}`,
-        params: {chain: goerli.name.toLowerCase()},
+        params: {chain: binance.name.toLowerCase()},
         headers: {accept: 'application/json', 'X-API-Key': TransactionService.API_KEY}
       };
 
